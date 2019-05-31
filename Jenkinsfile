@@ -18,7 +18,8 @@ pipeline {
             tox -l
           ''', returnStdout: true).trim().split('\n')
           envs.each { env ->
-            psteps += transformIntoStep(env)
+            echo env
+            psteps.put(transformIntoStep(env))
           }
           parallel psteps
         }
