@@ -12,6 +12,7 @@ pipeline {
             eval "$(pyenv init -)"
             eval "$(pyenv virtualenv-init -)"
 
+            export REMOTE_SELENIUM=\$(REMOTE_SELENIUM_FIREFOX)
             pyenv local 3.7.3
             tox -p auto
           ''', returnStdout: false).trim().split('\n')
