@@ -21,7 +21,13 @@ pipeline {
             psteps += transformIntoStep(env)
           }
           parallel psteps
-          
+        }
+        echo 'done building steps'
+      }
+    }
+  }
+}
+
           def transformIntoStep(env) {
             // We need to wrap what we return in a Groovy closure, or else it's invoked
             // when this method is called, not when we pass it to parallel.
@@ -44,9 +50,3 @@ pipeline {
               }
             }
           }
-        }
-        echo 'done building steps'
-      }
-    }
-  }
-}
