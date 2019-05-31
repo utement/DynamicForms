@@ -16,11 +16,11 @@ pipeline {
             # FIREFOX, EDGE, INTERNETEXPLORER
             tox -l
           ''', returnStdout: true).trim().split('\n')
-          println envs
           envs.each { env ->
             echo(env)
           }
         }
+        echo 'done building steps'
       }
     }
     stage('test') {
