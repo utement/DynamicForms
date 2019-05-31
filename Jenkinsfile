@@ -1,6 +1,19 @@
 pipeline {
   agent any
   stages {
+    stage('build steps') {
+      steps {
+        steps = [:]
+        envs = sh(script: 'uname', returnStdout: true).trim().split('\n')
+        envs.each { env ->
+          script {
+            stage(module) {
+              echo(env)
+            }
+          }
+        }
+      }
+    }
     stage('test') {
       steps {
         sh '''
