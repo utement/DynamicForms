@@ -1,3 +1,4 @@
+#@IgnoreInspection BashAddShebang
 pipeline {
   agent any
   stages {
@@ -44,7 +45,7 @@ def transformIntoStep(env) {
 
       pyenv local 3.7.3
       ls -l
-      export REMOTE_SELENIUM=$(REMOTE_SELENIUM_FIREFOX)
+      export REMOTE_SELENIUM=\$(REMOTE_SELENIUM_FIREFOX)
       tox -e ${env}"""
       }
     }
