@@ -8,8 +8,6 @@ pipeline {
           def psteps = [:]
           def envs = sh(script: '''
             #!/bin/bash
-            pwd
-            ls -l
             export PATH="/home/jure/.pyenv/bin:$PATH"
             eval "$(pyenv init -)"
             eval "$(pyenv virtualenv-init -)"
@@ -41,12 +39,12 @@ def transformIntoStep(env) {
       echo "testing ${env}"
       sh '''
       #!/bin/bash
-      pwd
       export PATH="/home/jure/.pyenv/bin:$PATH"
       eval "$(pyenv init -)"
       eval "$(pyenv virtualenv-init -)"
 
       pyenv local 3.7.3
+      ls -l
       export REMOTE_SELENIUM=win-velis:4444,jenkins,FIREFOX
       # FIREFOX, EDGE, INTERNETEXPLORER
       tox -e ''' + env
