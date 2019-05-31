@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('build steps') {
       steps {
+/*
         echo "building steps"
         script {
           def psteps = [:]
@@ -23,6 +24,18 @@ pipeline {
           parallel psteps
         }
         echo 'done building steps'
+*/
+      sh """
+      #!/bin/bash
+      export PATH="/home/jure/.pyenv/bin:$PATH"
+      eval "\$(pyenv init -)"
+      eval "\$(pyenv virtualenv-init -)"
+
+      pyenv local 3.7.3
+      ls -l
+      export REMOTE_SELENIUM=\$(REMOTE_SELENIUM_FIREFOX)
+      tox -p auto
+      """
       }
     }
   }
