@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('build steps') {
       steps {
-        steps = [:]
+        build_steps = [:]
         envs = sh(script: 'uname', returnStdout: true).trim().split('\n')
         envs.each { env ->
           script {
