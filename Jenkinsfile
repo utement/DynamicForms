@@ -9,6 +9,7 @@ pipeline {
           def envs = sh(script: '''
             #!/bin/bash
             pwd
+            ls -l
             export PATH="/home/jure/.pyenv/bin:$PATH"
             eval "$(pyenv init -)"
             eval "$(pyenv virtualenv-init -)"
