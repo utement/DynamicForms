@@ -1,4 +1,3 @@
-#@IgnoreInspection BashAddShebang
 pipeline {
   agent any
   stages {
