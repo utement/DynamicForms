@@ -13,8 +13,6 @@ pipeline {
             eval "$(pyenv virtualenv-init -)"
 
             pyenv local 3.7.3
-            export REMOTE_SELENIUM=win-velis:4444,jenkins,FIREFOX
-            # FIREFOX, EDGE, INTERNETEXPLORER
             tox -l
           ''', returnStdout: true).trim().split('\n')
           envs.each { env ->
@@ -45,8 +43,7 @@ def transformIntoStep(env) {
 
       pyenv local 3.7.3
       ls -l
-      export REMOTE_SELENIUM=win-velis:4444,jenkins,FIREFOX
-      # FIREFOX, EDGE, INTERNETEXPLORER
+      export REMOTE_SELENIUM=$(REMOTE_SELENIUM_FIREFOX)
       tox -e ${env}"""
     }
   }
