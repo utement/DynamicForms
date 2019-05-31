@@ -13,8 +13,8 @@ pipeline {
       }
     }
     stage('test') {
-      echo "testing app"
       steps {
+        echo "testing app"
         sh '''
         #!/bin/bash
         export PATH="/home/jure/.pyenv/bin:$PATH"
