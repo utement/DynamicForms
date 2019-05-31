@@ -13,8 +13,8 @@ pipeline {
             eval "$(pyenv virtualenv-init -)"
 
             pyenv local 3.7.3
-            tox -l
-          ''', returnStdout: true).trim().split('\n')
+            tox -p auto
+          ''', returnStdout: false).trim().split('\n')
           envs.each { env ->
             echo env
             psteps[env] = transformIntoStep(env)
