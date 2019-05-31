@@ -13,6 +13,7 @@ pipeline {
       }
     }
     stage('test') {
+      echo "testing app"
       steps {
         sh '''
         #!/bin/bash
