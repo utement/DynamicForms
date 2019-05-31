@@ -37,17 +37,17 @@ def transformIntoStep(env) {
   return {
     node {
       echo "testing ${env}"
-      sh '''
+      sh """
       #!/bin/bash
       export PATH="/home/jure/.pyenv/bin:$PATH"
-      eval "$(pyenv init -)"
-      eval "$(pyenv virtualenv-init -)"
+      eval "$$(pyenv init -)"
+      eval "$$(pyenv virtualenv-init -)"
 
       pyenv local 3.7.3
       ls -l
       export REMOTE_SELENIUM=win-velis:4444,jenkins,FIREFOX
       # FIREFOX, EDGE, INTERNETEXPLORER
-      tox -e ''' + env
+      tox -e ${env}"""
     }
   }
 }
