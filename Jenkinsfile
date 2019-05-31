@@ -1,5 +1,6 @@
 pipeline {
-  agent any
+  node {
+  agent none
   stages {
     stage('build steps') {
       steps {
@@ -22,6 +23,7 @@ pipeline {
           parallel psteps
         }
         echo 'done building steps'
+      }
       }
     }
   }
