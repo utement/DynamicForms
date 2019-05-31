@@ -33,7 +33,7 @@ def transformIntoStep(env) {
   // To do this, you need to wrap the code below in { }, and either return
   // that explicitly, or use { -> } syntax.
   return {
-    steps {
+    node {
       echo "testing ${env}"
       sh """
       #!/bin/bash
