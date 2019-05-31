@@ -3,11 +3,13 @@ pipeline {
   stages {
     stage('build steps') {
       steps {
-        def envs = sh(script: 'uname', returnStdout: true).trim().split('\n')
-        envs.each { env ->
-          script {
-            stage(module) {
-              echo(env)
+        script {
+          def envs = sh(script: 'uname', returnStdout: true).trim().split('\n')
+          envs.each { env ->
+            script {
+              stage(module) {
+                echo(env)
+              }
             }
           }
         }
