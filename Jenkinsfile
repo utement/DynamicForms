@@ -13,10 +13,9 @@ pipeline {
             eval "$(pyenv init -)"
             eval "$(pyenv virtualenv-init -)"
 
-            export REMOTE_SELENIUM=\$(REMOTE_SELENIUM_FIREFOX)
             pyenv local 3.7.3
-            tox -p auto
-          ''', returnStdout: false).trim().split('\n')
+            tox -l
+          ''', returnStdout: true).trim().split('\n')
           envs.each { env ->
             echo env
             psteps[env] = transformIntoStep(env)
@@ -33,7 +32,7 @@ pipeline {
 
       pyenv local 3.7.3
       ls -l
-      export REMOTE_SELENIUM=\$(REMOTE_SELENIUM_FIREFOX)
+      export REMOTE_SELENIUM=\$REMOTE_SELENIUM_FIREFOX
       tox -p auto
       """
       }
@@ -57,7 +56,7 @@ def transformIntoStep(env) {
 
       pyenv local 3.7.3
       ls -l
-      export REMOTE_SELENIUM=\$(REMOTE_SELENIUM_FIREFOX)
+      export REMOTE_SELENIUM=\$REMOTE_SELENIUM_FIREFOX
       tox -e ${env}"""
     }
   }
