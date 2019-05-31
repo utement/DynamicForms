@@ -33,7 +33,8 @@ def transformIntoStep(env) {
   // To do this, you need to wrap the code below in { }, and either return
   // that explicitly, or use { -> } syntax.
   return {
-    node {
+    stage(env) {
+      steps {
       echo "testing ${env}"
       sh """
       #!/bin/bash
@@ -45,6 +46,7 @@ def transformIntoStep(env) {
       ls -l
       export REMOTE_SELENIUM=$(REMOTE_SELENIUM_FIREFOX)
       tox -e ${env}"""
+      }
     }
   }
 }
