@@ -19,7 +19,7 @@ pipeline {
           ''', returnStdout: true).trim().split('\n')
           envs.each { env ->
             echo env
-            psteps.put(transformIntoStep(env))
+            psteps[env] = transformIntoStep(env)
           }
           parallel psteps
         }
