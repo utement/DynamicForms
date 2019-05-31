@@ -3,6 +3,7 @@ pipeline {
   stages {
     stage('build steps') {
       steps {
+        echo "building steps"
         script {
           def envs = sh(script: 'uname', returnStdout: true).trim().split('\n')
           envs.each { env ->
@@ -26,7 +27,7 @@ pipeline {
         pyenv local 3.7.3
         export REMOTE_SELENIUM=win-velis:4444,jenkins,FIREFOX
         # FIREFOX, EDGE, INTERNETEXPLORER
-        tox
+        # tox
         '''
       }
     }
