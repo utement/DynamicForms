@@ -46,7 +46,7 @@ def transformIntoStep(env) {
       pyenv local 3.7.3
       export REMOTE_SELENIUM=win-velis:4444,jenkins,FIREFOX
       # FIREFOX, EDGE, INTERNETEXPLORER
-      tox -e '''env
+      tox -e ''' + env
     }
   }
 }
