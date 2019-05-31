@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent none
   stages {
     stage('build steps') {
       steps {
@@ -34,8 +34,6 @@ def transformIntoStep(env) {
   // that explicitly, or use { -> } syntax.
   return {
     node {
-      stage('a') {
-        steps {
       echo "testing ${env}"
       sh """
       #!/bin/bash
@@ -47,8 +45,6 @@ def transformIntoStep(env) {
       ls -l
       export REMOTE_SELENIUM=\$(REMOTE_SELENIUM_FIREFOX)
       tox -e ${env}"""
-        }
-      }
     }
   }
 }
